@@ -1,16 +1,18 @@
-import { ref } from "vue";
+import { ref } from 'vue';
 import type { ChatMessage } from '@/interfaces/chat-message-interface';
-import type { YesOrNot } from "@/interfaces/yes-or-not-interface";
-import { sleep } from "@/helpers/sleep";
-export const useChat = () => {
+import type { YesOrNot } from '@/interfaces/yes-or-not-interface';
+import { sleep } from '@/helpers/sleep';
 
+export const useChat = () => {
   const messages = ref<ChatMessage[]>([]);
 
-  const getOtherUserResponse = async ():Promise<YesOrNot> => {
+  const isTyping = ref<boolean>(false);
+
+  const getOtherUserResponse = async (): Promise<YesOrNot> => {
     const response = await fetch('https://yesno.wtf/api');
     const data = await response.json();
     return data;
-  }
+  };
 
   const addNewMessage = async (message: string) => {
     if (message.length === 0) return;
@@ -22,7 +24,11 @@ export const useChat = () => {
     });
 
     if (!message.endsWith('?')) return;
+
+    isTyping.value = true;
     await sleep(2000);
+    isTyping.value = false;
+
     const response = await getOtherUserResponse();
     messages.value.push({
       id: 'id-' + crypto.randomUUID(),
@@ -32,8 +38,9 @@ export const useChat = () => {
     });
   };
 
-return {
-  messages,
-  addNewMessage,
-}
-}
+  return {
+    messages,
+    isTyping,
+    addNewMessage,
+  };
+};

@@ -3,7 +3,7 @@ import ChatMessages from '@/components/chat/ChatMessages.vue';
 import MessageBox from '@/components/chat/MessageBox.vue';
 import { useChat } from '@/composables/useChat';
 
-const { messages, addNewMessage } = useChat();
+const { messages, isTyping, addNewMessage } = useChat();
 
 </script>
 
@@ -14,7 +14,7 @@ const { messages, addNewMessage } = useChat();
       <span>Mi esposa</span>
     </div>
     <!-- Messages go here -->
-     <ChatMessages :messages/>
+     <ChatMessages :messages :isTyping/>
      <!-- Message Box -->
      <MessageBox @send-message="addNewMessage" />
   </div>
