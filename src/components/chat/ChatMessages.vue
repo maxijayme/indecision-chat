@@ -2,18 +2,15 @@
 import type { ChatMessage } from '@/interfaces/chat-message-interface';
 import ChatBubble from './ChatBubble.vue';
 import { nextTick, ref, watch } from 'vue';
-;
-
 interface Props {
   messages: ChatMessage[];
   isTyping: boolean;
 }
 const props = defineProps<Props>();
 
-
 const chatRef = ref<HTMLElement | null>(null);
 
-watch(props.messages, async () => {
+watch(props, async () => {
   await nextTick();
   if (chatRef.value) {
     chatRef.value.scrollTo({
@@ -22,7 +19,6 @@ watch(props.messages, async () => {
     });
   }
 });
-
 </script>
 
 <template>

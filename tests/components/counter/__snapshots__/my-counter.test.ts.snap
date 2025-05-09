@@ -1,0 +1,28 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<MyCounter> > should match snapshot 1`] = `
+<section>
+  <h3
+    data-vtest="counter-label"
+  >
+    Counter: 10
+  </h3>
+  <h3>
+    Square: 100
+  </h3>
+  <div>
+    <button
+      class="btn"
+      data-vtest="increment-btn"
+    >
+      +1
+    </button>
+    <button
+      class="btn"
+      data-vtest="decrement-btn"
+    >
+      -1
+    </button>
+  </div>
+</section>
+`;

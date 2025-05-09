@@ -13,6 +13,8 @@ const emits = defineEmits<{
   sendMessage: [text:string];
 }>();
 
+defineExpose({ newMessage })
+
 </script>
 
 <template>
