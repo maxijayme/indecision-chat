@@ -11,6 +11,7 @@
     "type-check": "vue-tsc --build",
     "test": "vitest --watch",
     "test:unit": "vitest",
+    "coverage": "vitest run --coverage",
     "lint": "eslint . --fix",
     "format": "prettier --write src/"
   },
@@ -23,6 +24,7 @@
     "@tsconfig/node22": "^22.0.1",
     "@types/node": "^22.13.14",
     "@vitejs/plugin-vue": "^5.2.3",
+    "@vitest/coverage-v8": "3.1.1",
     "@vue/eslint-config-prettier": "^10.2.0",
     "@vue/eslint-config-typescript": "^14.5.0",
     "@vue/test-utils": "^2.4.6",
